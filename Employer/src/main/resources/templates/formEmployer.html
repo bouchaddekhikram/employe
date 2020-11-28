@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Ajout des Employers</title>
+</head>
+<body>
+<div layout:fragment="Mycontent">
+<div class="container mt-5">
+<div class="card">
+<div class="card-header"> Ajout des Employers </div>
+<div class="card-header" th:if="${mode=='edit'}">Modification des Employers
+</div>
+<div class="card-body">
+ 
+ <form th:action="@{saveEmployer}" method="post">
+ <div class="form-group">
+<label class="control-label" hidden>ID Employer :</label>
+<input type="hidden" name="idEmployer" class="form-control"
+th:value="${employer.idEmployer}" />
+ </div>
+<div class="form-group">
+<label class="control-label">Salaire :</label>
+<input type="text" name="salaire" class="form-control"
+th:value="${employer.salaire}" />
+<span th:errors=${employer.salaire} class="text-danger"> </span>
+</div>
+<div class="form-group">
+<label class="control-label">date début travail :</label>
+<input type="date" name="dateDebut" class="form-control"
+th:value="${employer.dateDebut}"/>
+<span th:errors=${employer.dateDebut} class="text-danger"> </span>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Ajouter</button>
+</div>
+</form>
+ 
+ 
+</div>
+ </div>
+ </div>
+ </div>
+</body>
+</html>
